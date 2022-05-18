@@ -13,6 +13,7 @@
         <module name="customer" />
         <module name="fraud" />
         <module name="notifications" />
+        <module name="amqp" />
       </profile>
     </annotationProcessing>
   </component>

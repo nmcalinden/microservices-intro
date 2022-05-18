@@ -1,8 +1,8 @@
 package com.micro.customer.service;
 
+import com.micro.amqp.RabbitMQMessageProducer;
 import com.micro.clients.fraud.FraudCheckResponse;
 import com.micro.clients.fraud.FraudClient;
-import com.micro.clients.notifications.NotificationClient;
 import com.micro.clients.notifications.NotificationRequest;
 import com.micro.customer.Customer;
 import com.micro.customer.CustomerRepository;
@@ -16,7 +16,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
-    private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     public void registerCustomer(CustomerRequest request) {
         Customer customer = Customer.builder()
@@ -32,12 +32,16 @@ public class CustomerService {
             throw new IllegalStateException("Fraudster");
         }
 
-        notificationClient.sendNotification(
-                NotificationRequest.builder()
-                        .toCustomerId(customer.getId())
-                        .toCustomerName(customer.getEmail())
-                        .message("Hey - Notification sent!")
-                        .build()
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .toCustomerId(customer.getId())
+                .toCustomerName(customer.getEmail())
+                .message("Hey - Notification sent!")
+                .build();
+
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
         );
     }
 }
