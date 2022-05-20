@@ -1,4 +1,4 @@
-package com.micro.notifications;
+package com.micro.notification;
 
 import lombok.Getter;
 import org.springframework.amqp.core.Binding;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Getter
-public class NotificationsConfig {
+public class NotificationConfig {
 
     @Value("${rabbitmq.exchanges.internal}")
     private String internalExchange;

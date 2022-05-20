@@ -1,4 +1,4 @@
-package com.micro.notifications;
+package com.micro.notification;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

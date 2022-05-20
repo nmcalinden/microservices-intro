@@ -1,7 +1,7 @@
-package com.micro.notifications.rabbitmq;
+package com.micro.notification.rabbitmq;
 
-import com.micro.clients.notifications.NotificationRequest;
-import com.micro.notifications.NotificationsService;
+import com.micro.clients.notification.NotificationRequest;
+import com.micro.notification.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class NotificationConsumer {
 
-    private final NotificationsService notificationsService;
+    private final NotificationService notificationService;
 
     @RabbitListener(queues = "${rabbitmq.queues.notification}")
     public void consumer(NotificationRequest notificationRequest) {
         log.info("Consumed {} from queue", notificationRequest);
-        notificationsService.send(notificationRequest);
+        notificationService.send(notificationRequest);
     }
 }

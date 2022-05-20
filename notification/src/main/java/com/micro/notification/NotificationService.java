@@ -1,6 +1,6 @@
-package com.micro.notifications;
+package com.micro.notification;
 
-import com.micro.clients.notifications.NotificationRequest;
+import com.micro.clients.notification.NotificationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class NotificationsService {
+public class NotificationService {
 
-    private final NotificationsRepository notificationsRepository;
+    private final NotificationRepository notificationRepository;
 
     public void send(NotificationRequest notificationRequest) {
-        notificationsRepository.save(
+        notificationRepository.save(
                 Notification.builder()
                         .toCustomerId(notificationRequest.getToCustomerId())
                         .toCustomerEmail(notificationRequest.getToCustomerName())

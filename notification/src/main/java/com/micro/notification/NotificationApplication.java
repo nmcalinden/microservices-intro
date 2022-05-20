@@ -1,4 +1,4 @@
-package com.micro.notifications;
+package com.micro.notification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,22 +6,22 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.micro.notifications",
+                "com.micro.notification",
                 "com.micro.amqp",
         }
 )
 @EnableEurekaClient
-public class NotificationsApplication {
+public class NotificationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NotificationsApplication.class, args);
+        SpringApplication.run(NotificationApplication.class, args);
     }
 
 //    @Bean
-//    CommandLineRunner commandLineRunner(RabbitMQMessageProducer producer, NotificationsConfig notificationsConfig) {
+//    CommandLineRunner commandLineRunner(RabbitMQMessageProducer producer, NotificationConfig notificationConfig) {
 //        return args -> {
-//            producer.publish(new Person("Nathan", "28"), notificationsConfig.getInternalExchange(),
-//                    notificationsConfig.getInternalNotificationRoutingKey());
+//            producer.publish(new Person("Nathan", "28"), notificationConfig.getInternalExchange(),
+//                    notificationConfig.getInternalNotificationRoutingKey());
 //        };
 //    }
 //

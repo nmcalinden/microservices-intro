@@ -3,7 +3,7 @@ package com.micro.customer.service;
 import com.micro.amqp.RabbitMQMessageProducer;
 import com.micro.clients.fraud.FraudCheckResponse;
 import com.micro.clients.fraud.FraudClient;
-import com.micro.clients.notifications.NotificationRequest;
+import com.micro.clients.notification.NotificationRequest;
 import com.micro.customer.Customer;
 import com.micro.customer.CustomerRepository;
 import com.micro.customer.CustomerRequest;

@@ -12,8 +12,8 @@
         <module name="apigw" />
         <module name="customer" />
         <module name="fraud" />
-        <module name="notifications" />
         <module name="amqp" />
+        <module name="notification" />
       </profile>
     </annotationProcessing>
   </component>

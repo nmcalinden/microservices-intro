@@ -1,6 +1,6 @@
-package com.micro.notifications;
+package com.micro.notification;
 
-import com.micro.clients.notifications.NotificationRequest;
+import com.micro.clients.notification.NotificationRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/notification")
 @RequiredArgsConstructor
 @Slf4j
-public class NotificationsController {
+public class NotificationController {
 
-    private final NotificationsService notificationsService;
+    private final NotificationService notificationService;
 
     @PostMapping
     public void sendNotification(@RequestBody NotificationRequest notificationRequest) {
         log.info("New notification... {}", notificationRequest);
-        notificationsService.send(notificationRequest);
+        notificationService.send(notificationRequest);
     }
 }
